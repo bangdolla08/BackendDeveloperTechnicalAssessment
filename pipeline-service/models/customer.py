@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Text, Date, Numeric, Timestamp
+from sqlalchemy import Column, String, Text, Date, Numeric, DateTime
 from database import Base
 
 class Customer(Base):
@@ -12,4 +12,4 @@ class Customer(Base):
     address = Column(Text)
     date_of_birth = Column(Date)
     account_balance = Column(Numeric(15, 2))
-    created_at = Column(Timestamp)
+    created_at = Column(DateTime) # Gunakan DateTime di sini
