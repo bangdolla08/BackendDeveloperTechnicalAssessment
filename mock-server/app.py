@@ -37,5 +37,18 @@ def get_customers():
         "limit": limit
     }), 200
 
+
+@app.route('/api/customers/<id>', methods=['GET'])
+def get_customer_by_id(id):
+    """Single customer by ID """
+    all_customers = load_customers()
+
+    customer = next((c for c in all_customers if c['customer_id'] == id), None)
+
+    if customer:
+        return jsonify(customer), 200
+
+    return jsonify({"error": "Customer not found"}), 404
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
